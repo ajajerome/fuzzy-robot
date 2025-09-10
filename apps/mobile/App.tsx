@@ -1,13 +1,11 @@
 import { SafeAreaView, Text, View } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
 
 export default function App() {
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#0b1a30' }}>
-      <StatusBar style="light" />
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#ff00ff' }}>
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 24 }}>
-        <Text style={{ color: '#eaf1ff', fontSize: 22, fontWeight: '700' }}>Hej från clean</Text>
-        <Text style={{ color: '#8aa4d6', marginTop: 8, textAlign: 'center' }}>Minimal vy för felsökning</Text>
+        <Text style={{ color: '#000000', fontSize: 24, fontWeight: '800' }}>UI TEST</Text>
+        <Text style={{ color: '#000000', marginTop: 8, textAlign: 'center' }}>Ska visas i magenta bakgrund</Text>
       </View>
     </SafeAreaView>
   );
