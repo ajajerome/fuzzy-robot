@@ -6,7 +6,7 @@
   "build": {
     "preview": {
       "developmentClient": false,
-      "distribution": "internal",
+      "distribution": "app-store",
       "ios": {
         "image": "latest"
       },
