@@ -11,13 +11,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      - name: Install EAS CLI
+        run: npm i -g eas-cli
       - name: Install dependencies
         working-directory: apps/mobile
         run: npm install --no-audit --no-fund
-      - name: Login to Expo
+      - name: Login to EAS
         env:
-          EXPO_TOKEN: ${{ secrets.EAS_TOKEN }}
-        run: npx expo whoami || npx expo login --token "$EXPO_TOKEN"
+          EAS_TOKEN: ${{ secrets.EAS_TOKEN }}
+        run: eas whoami || eas login --token "$EAS_TOKEN"
       - name: Diagnostics (doctor, versions, config)
         working-directory: apps/mobile
         env:
@@ -30,14 +32,15 @@ jobs:
           npx expo --version || true
           npx expo doctor || true
           npx expo config --type public || true
-      - name: Publish to staging (Expo Go)
+      - name: Publish to staging (EAS Update)
         working-directory: apps/mobile
         env:
-          EXPO_TOKEN: ${{ secrets.EAS_TOKEN }}
+          EAS_TOKEN: ${{ secrets.EAS_TOKEN }}
           EXPO_PUBLIC_SUPABASE_URL: ${{ secrets.EXPO_PUBLIC_SUPABASE_URL }}
           EXPO_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.EXPO_PUBLIC_SUPABASE_ANON_KEY }}
           EXPO_EAS_PROJECT_ID: ${{ secrets.EXPO_EAS_PROJECT_ID }}
           EXPO_NO_TELEMETRY: "1"
           EXPO_DEBUG: "1"
-        run: npx expo publish --non-interactive --release-channel staging --max-workers 1 --log-level debug
+          CI: "1"
+        run: eas update --branch staging --message "CI staging" --non-interactive
 
