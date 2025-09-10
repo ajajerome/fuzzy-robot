@@ -1,0 +1,23 @@
+{
+  "name": "spelforstaelse-fc-mobile",
+  "version": "0.1.0",
+  "private": true,
+  "main": "expo-entry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "expo": "~51.0.20",
+    "expo-status-bar": "~1.12.1",
+    "react": "18.2.0",
+    "react-native": "0.74.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "typescript": "^5.4.5"
+  }
+}
+

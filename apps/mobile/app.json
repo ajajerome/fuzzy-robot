@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "Spelförståelse FC",
+    "slug": "spelforstaelse-fc",
+    "scheme": "spelfc",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0b1a30"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.yourorg.spelfc"
+    },
+    "android": {
+      "package": "com.yourorg.spelfc"
+    },
+    "web": {
+      "bundler": "metro",
+      "favicon": "./assets/icon.png"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/00000000-0000-0000-0000-000000000000"
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "plugins": []
+  }
+}
+

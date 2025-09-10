@@ -1,0 +1,12 @@
+{
+  "lock": false,
+  "lint": {
+    "rules": {
+      "tags": ["recommended"]
+    }
+  },
+  "test": {
+    "include": ["supabase/functions/**/test.ts"]
+  }
+}
+
