@@ -12,6 +12,14 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     scheme: "spelfc",
     version: "1.0.0",
     orientation: "portrait",
+    runtimeVersion: {
+      policy: "appVersion",
+    },
+    updates: projectId
+      ? {
+          url: `https://u.expo.dev/${projectId}`,
+        }
+      : undefined,
     ios: {
       supportsTablet: true,
       bundleIdentifier: "com.yourorg.spelfc",
