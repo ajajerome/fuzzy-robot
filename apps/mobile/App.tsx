@@ -4,6 +4,8 @@ import { StatusBar } from 'expo-status-bar';
 import { Platform } from 'react-native';
 
 export default function App() {
+  // Simple error boundary-ish state
+  try {
   const [status, setStatus] = useState<string>('');
   const [title, setTitle] = useState<string>('');
 
@@ -63,5 +65,16 @@ export default function App() {
       </View>
     </SafeAreaView>
   );
+  } catch (e: any) {
+    return (
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#0b1a30' }}>
+        <StatusBar style="light" />
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 24 }}>
+          <Text style={{ color: '#eaf1ff', fontSize: 18, fontWeight: '700' }}>Ett fel inträffade</Text>
+          <Text style={{ color: '#8aa4d6', marginTop: 8, textAlign: 'center' }}>{String(e?.message ?? e)}</Text>
+        </View>
+      </SafeAreaView>
+    );
+  }
 }
 
