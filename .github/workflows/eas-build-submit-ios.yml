@@ -1,0 +1,36 @@
+name: EAS iOS Build & Submit (TestFlight)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-submit-ios:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install EAS CLI
+        run: npm i -g eas-cli
+      - name: Login to EAS
+        env:
+          EXPO_TOKEN: ${{ secrets.EAS_TOKEN }}
+        run: eas whoami || true
+      - name: Install deps
+        working-directory: apps/mobile
+        run: npm ci || npm i
+      - name: Build iOS (preview)
+        working-directory: apps/mobile
+        env:
+          EXPO_TOKEN: ${{ secrets.EAS_TOKEN }}
+        run: eas build --platform ios --profile preview --non-interactive
+      - name: Submit to TestFlight
+        working-directory: apps/mobile
+        env:
+          EXPO_TOKEN: ${{ secrets.EAS_TOKEN }}
+          APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: eas submit --platform ios --latest --non-interactive --apple-id "$APPLE_ID" --asc-app-id "$APPLE_TEAM_ID"
+
