@@ -1,0 +1,31 @@
+name: EAS Build (manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: 'ios|android|all'
+        required: false
+        default: 'ios'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install EAS CLI
+        run: npm i -g eas-cli
+      - name: Login to EAS
+        run: eas whoami || eas login --token ${{ secrets.EAS_TOKEN }}
+      - name: Trigger build
+        working-directory: apps/mobile
+        env:
+          EXPO_TOKEN: ${{ secrets.EAS_TOKEN }}
+        run: |
+          PLATFORM="${{ github.event.inputs.platform }}"
+          if [ -z "$PLATFORM" ]; then PLATFORM=ios; fi
+          eas build --platform $PLATFORM --non-interactive --profile preview
+
