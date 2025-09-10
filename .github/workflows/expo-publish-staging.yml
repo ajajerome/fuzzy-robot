@@ -13,7 +13,7 @@ jobs:
           node-version: 20
       - name: Install dependencies
         working-directory: apps/mobile
-        run: npm ci
+        run: npm install --no-audit --no-fund
       - name: Login to Expo
         env:
           EXPO_TOKEN: ${{ secrets.EAS_TOKEN }}
