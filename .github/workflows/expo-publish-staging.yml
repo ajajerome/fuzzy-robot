@@ -36,6 +36,7 @@ jobs:
           EXPO_TOKEN: ${{ secrets.EAS_TOKEN }}
           EXPO_PUBLIC_SUPABASE_URL: ${{ secrets.EXPO_PUBLIC_SUPABASE_URL }}
           EXPO_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.EXPO_PUBLIC_SUPABASE_ANON_KEY }}
+          EXPO_EAS_PROJECT_ID: ${{ secrets.EXPO_EAS_PROJECT_ID }}
           EXPO_NO_TELEMETRY: "1"
           EXPO_DEBUG: "1"
         run: npx expo publish --non-interactive --release-channel staging --max-workers 1 --log-level debug

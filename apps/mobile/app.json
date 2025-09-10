@@ -1,23 +1,2 @@
-{
-  "expo": {
-    "name": "Spelförståelse FC",
-    "slug": "spelforstaelse-fc",
-    "scheme": "spelfc",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.yourorg.spelfc"
-    },
-    "android": {
-      "package": "com.yourorg.spelfc"
-    },
-    "web": {
-      "bundler": "metro",
-      "favicon": ""
-    },
-    "plugins": []
-  }
-}
+{}
 
