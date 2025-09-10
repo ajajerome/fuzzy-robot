@@ -7,8 +7,8 @@ export default ({ config }: ConfigContext): ExpoConfig => {
 
   return {
     owner: "jappmaster",
-    name: "Spelförståelse FC",
-    slug: "spelforstaelse-fc",
+    name: "Fotbollstränaren",
+    slug: "fotbollstranaren",
     scheme: "spelfc",
     version: "1.0.0",
     orientation: "portrait",
