@@ -6,6 +6,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
   const supabaseAnon = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY;
 
   return {
+    owner: "jappmaster",
     name: "Spelförståelse FC",
     slug: "spelforstaelse-fc",
     scheme: "spelfc",
