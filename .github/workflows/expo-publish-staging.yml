@@ -51,3 +51,15 @@ jobs:
           CI: "1"
         run: eas update --branch staging --message "CI staging" --non-interactive
 
+      - name: Publish to clean (EAS Update)
+        working-directory: apps/mobile
+        env:
+          EXPO_TOKEN: ${{ secrets.EAS_TOKEN }}
+          EXPO_PUBLIC_SUPABASE_URL: ${{ secrets.EXPO_PUBLIC_SUPABASE_URL }}
+          EXPO_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.EXPO_PUBLIC_SUPABASE_ANON_KEY }}
+          EXPO_EAS_PROJECT_ID: ${{ secrets.EXPO_EAS_PROJECT_ID }}
+          EXPO_NO_TELEMETRY: "1"
+          EXPO_DEBUG: "1"
+          CI: "1"
+        run: eas update --branch clean --message "CI clean" --non-interactive
+
