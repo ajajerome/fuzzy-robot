@@ -1,4 +1,4 @@
-name: EAS Dev Client (manual)
+name: EAS Dev Client (manual or on push)
 
 on:
   workflow_dispatch:
@@ -7,6 +7,10 @@ on:
         description: 'ios|android|all'
         required: false
         default: 'ios'
+  push:
+    branches: [ main ]
+    paths:
+      - 'apps/mobile/**'
 
 jobs:
   build:
