@@ -13,7 +13,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     version: "1.0.0",
     orientation: "portrait",
     runtimeVersion: {
-      policy: "sdkRuntimeVersion",
+      policy: "sdkVersion",
     },
     updates: projectId
       ? {
