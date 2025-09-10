@@ -15,7 +15,9 @@ jobs:
         run: npm i -g eas-cli
       - name: Install dependencies
         working-directory: apps/mobile
-        run: npm install --no-audit --no-fund
+        run: |
+          npm install --no-audit --no-fund
+          npx expo install --fix --non-interactive || true
       - name: Verify EAS auth (optional)
         env:
           EXPO_TOKEN: ${{ secrets.EAS_TOKEN }}
