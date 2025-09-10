@@ -18,11 +18,25 @@ jobs:
         env:
           EXPO_TOKEN: ${{ secrets.EAS_TOKEN }}
         run: npx expo whoami || npx expo login --token "$EXPO_TOKEN"
+      - name: Diagnostics (doctor, versions, config)
+        working-directory: apps/mobile
+        env:
+          EXPO_TOKEN: ${{ secrets.EAS_TOKEN }}
+          EXPO_PUBLIC_SUPABASE_URL: ${{ secrets.EXPO_PUBLIC_SUPABASE_URL }}
+          EXPO_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.EXPO_PUBLIC_SUPABASE_ANON_KEY }}
+        run: |
+          node -v
+          npm -v
+          npx expo --version || true
+          npx expo doctor || true
+          npx expo config --type public || true
       - name: Publish to staging (Expo Go)
         working-directory: apps/mobile
         env:
           EXPO_TOKEN: ${{ secrets.EAS_TOKEN }}
           EXPO_PUBLIC_SUPABASE_URL: ${{ secrets.EXPO_PUBLIC_SUPABASE_URL }}
           EXPO_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.EXPO_PUBLIC_SUPABASE_ANON_KEY }}
-        run: npx expo publish --non-interactive --release-channel staging
+          EXPO_NO_TELEMETRY: "1"
+          EXPO_DEBUG: "1"
+        run: npx expo publish --non-interactive --release-channel staging --max-workers 1 --log-level debug
 
