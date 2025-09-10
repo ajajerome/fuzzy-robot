@@ -45,7 +45,7 @@ export default function App() {
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 24 }}>
         <Text style={{ color: '#eaf1ff', fontSize: 22, fontWeight: '700' }}>Spelförståelse FC</Text>
         <Text style={{ color: '#8aa4d6', marginTop: 8, textAlign: 'center' }}>
-          Expo baseline – tryck för att testa scenario-API
+          Expo staging – tryck för att testa scenario-API
         </Text>
 
         <TouchableOpacity
