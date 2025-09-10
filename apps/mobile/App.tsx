@@ -3,7 +3,7 @@ import { SafeAreaView, Text, View, TouchableOpacity } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Platform } from 'react-native';
 import { colors } from './src/theme';
-import { Pitch, PlayerToken } from './src/components/Pitch';
+import { PitchLite, PlayerToken } from './src/components/PitchLite';
 
 export default function App() {
   // Simple error boundary-ish state
@@ -72,7 +72,7 @@ export default function App() {
         ) : null}
 
         <View style={{ width: '90%', height: 260, marginTop: 20 }}>
-          <Pitch
+          <PitchLite
             width={Math.min(360, Math.round(0.9 * 360))}
             height={220}
             players={players}
