@@ -1,0 +1,26 @@
+name: Expo Publish (staging)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install dependencies
+        working-directory: apps/mobile
+        run: npm ci
+      - name: Login to Expo
+        env:
+          EXPO_TOKEN: ${{ secrets.EAS_TOKEN }}
+        run: npx expo whoami || npx expo login --token "$EXPO_TOKEN"
+      - name: Publish to staging (Expo Go)
+        working-directory: apps/mobile
+        env:
+          EXPO_TOKEN: ${{ secrets.EAS_TOKEN }}
+        run: npx expo publish --non-interactive --release-channel staging
+
