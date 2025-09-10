@@ -4,10 +4,9 @@ import { StatusBar } from 'expo-status-bar';
 import { Platform } from 'react-native';
 import { colors } from './src/theme';
 import { PitchLite, PlayerToken } from './src/components/PitchLite';
+import { ErrorBoundary } from './src/components/ErrorBoundary';
 
 export default function App() {
-  // Simple error boundary-ish state
-  try {
   const [status, setStatus] = useState<string>('');
   const [title, setTitle] = useState<string>('');
   const [players, setPlayers] = useState<PlayerToken[]>([
@@ -48,6 +47,7 @@ export default function App() {
   }, [supabaseUrl, supabaseAnon]);
 
   return (
+    <ErrorBoundary>
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
       <StatusBar style="light" />
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 24 }}>
@@ -81,17 +81,7 @@ export default function App() {
         </View>
       </View>
     </SafeAreaView>
+    </ErrorBoundary>
   );
-  } catch (e: any) {
-    return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#0b1a30' }}>
-        <StatusBar style="light" />
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 24 }}>
-          <Text style={{ color: '#eaf1ff', fontSize: 18, fontWeight: '700' }}>Ett fel inträffade</Text>
-          <Text style={{ color: '#8aa4d6', marginTop: 8, textAlign: 'center' }}>{String(e?.message ?? e)}</Text>
-        </View>
-      </SafeAreaView>
-    );
-  }
 }
 
