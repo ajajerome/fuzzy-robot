@@ -33,7 +33,12 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     web: {
       bundler: "metro",
     },
-    plugins: [],
+    plugins: [
+      ["expo-build-properties", { ios: { deploymentTarget: "13.0" } }]
+    ],
+    experiments: {
+      tsconfigPaths: false,
+    },
     extra: {
       eas: {
         projectId: projectId,
