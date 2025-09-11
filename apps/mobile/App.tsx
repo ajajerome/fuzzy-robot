@@ -24,7 +24,7 @@ export default function App() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0b1a30' }}>
       <ScrollView contentContainerStyle={{ flexGrow: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 24, paddingVertical: 24 }}>
-        <Text style={{ color: '#eaf1ff', fontSize: 22, fontWeight: '800' }}>Spelförståelse FC</Text>
+        <Text style={{ color: '#eaf1ff', fontSize: 22, fontWeight: '800' }}>Spelförståelse FC – Testbuild</Text>
         <TouchableOpacity onPress={load} style={{ marginTop: 16, backgroundColor: '#1e3a8a', paddingVertical: 12, paddingHorizontal: 20, borderRadius: 10 }}>
           <Text style={{ color: '#eaf1ff', fontSize: 16, fontWeight: '700' }}>Hämta scenario</Text>
         </TouchableOpacity>
