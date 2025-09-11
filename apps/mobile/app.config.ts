@@ -34,7 +34,18 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       bundler: "metro",
     },
     plugins: [
-      ["expo-build-properties", { ios: { deploymentTarget: "14.0" } }]
+      [
+        "expo-build-properties",
+        {
+          ios: {
+            deploymentTarget: "14.0",
+            flipper: false,
+            pods: {
+              sources: ["https://cdn.cocoapods.org/"]
+            }
+          }
+        }
+      ]
     ],
     experiments: {
       tsconfigPaths: false,
