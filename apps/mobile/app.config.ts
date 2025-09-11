@@ -7,7 +7,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
 
   return {
     owner: "jappmaster",
-    name: "Fotbollstränaren",
+    name: "Fotbollsresan",
     slug: "fotbollstranaren",
     scheme: "spelfc",
     version: "1.0.0",
@@ -22,13 +22,13 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       : undefined,
     ios: {
       supportsTablet: true,
-      bundleIdentifier: "com.yourorg.spelfc",
+      bundleIdentifier: "com.ajagames.learnfotball",
       infoPlist: {
         ITSAppUsesNonExemptEncryption: false,
       },
     },
     android: {
-      package: "com.yourorg.spelfc",
+      package: "com.ajagames.learnfotball",
     },
     web: {
       bundler: "metro",
