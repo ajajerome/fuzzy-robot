@@ -1,10 +1,13 @@
 import { SafeAreaView, Text, View, TouchableOpacity, ActivityIndicator, ScrollView } from 'react-native';
 import { fetchScenario, scoreAnswer } from './src/lib/api';
 import { MatchScenario, ScenarioAnswer } from './src/types/scenario';
+import { PitchLite, PlayerToken } from './src/components/PitchLite';
+import { scenarioPlayersToTokens } from './src/utils/players';
 
 export default function App() {
   const [loading, setLoading] = React.useState(false);
   const [scenario, setScenario] = React.useState<MatchScenario | null>(null);
+  const [tokens, setTokens] = React.useState<PlayerToken[]>([]);
   const [error, setError] = React.useState<string>('');
   const [scoreText, setScoreText] = React.useState<string>('');
 
@@ -14,6 +17,7 @@ export default function App() {
     try {
       const s = await fetchScenario();
       setScenario(s);
+      setTokens(scenarioPlayersToTokens(s));
     } catch (e: any) {
       setError(e?.message ?? 'Fel');
     } finally {
@@ -35,6 +39,18 @@ export default function App() {
             <Text style={{ color: '#eaf1ff', fontSize: 16, fontWeight: '700', textAlign: 'center' }}>{scenario.title}</Text>
             <Text style={{ color: '#8aa4d6', marginTop: 6 }}>Format: {scenario.format} – Ålder: {scenario.ageGroup}</Text>
             <Text style={{ color: '#8aa4d6', marginTop: 6, textAlign: 'center' }}>{scenario.prompt}</Text>
+
+            <View style={{ width: '100%', alignItems: 'center', marginTop: 12 }}>
+              <PitchLite
+                width={Math.min(360, Math.round(0.92 * 360))}
+                height={220}
+                players={tokens}
+                onMove={(id, x, y) => setTokens(prev => prev.map(p => p.id === id ? { ...p, x, y } : p))}
+              />
+              <TouchableOpacity onPress={() => setTokens(scenarioPlayersToTokens(scenario))} style={{ marginTop: 8 }}>
+                <Text style={{ color: '#93c5fd' }}>Återställ spelare</Text>
+              </TouchableOpacity>
+            </View>
 
             {/* Minimal interaktion: simulera ett pass + en löpning och bedöm */}
             <TouchableOpacity
