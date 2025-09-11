@@ -1,7 +1,7 @@
 import type { ConfigContext, ExpoConfig } from "@expo/config";
 
 export default ({ config }: ConfigContext): ExpoConfig => {
-  const projectId = process.env.EXPO_EAS_PROJECT_ID;
+  const projectId = process.env.EXPO_EAS_PROJECT_ID ?? "7cae0243-bae5-4dee-b10d-11a4169cbac0";
   const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL;
   const supabaseAnon = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY;
 

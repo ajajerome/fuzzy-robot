@@ -2,6 +2,10 @@ name: EAS iOS Build & Submit (TestFlight)
 
 on:
   workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - 'apps/mobile/**'
 
 jobs:
   build-submit-ios:
@@ -19,7 +23,9 @@ jobs:
         run: eas whoami || true
       - name: Install deps
         working-directory: apps/mobile
-        run: npm ci || npm i
+        run: |
+          npm install --no-audit --no-fund
+          npx expo install --check --fix --non-interactive || true
       - name: Build iOS (preview)
         working-directory: apps/mobile
         env:
