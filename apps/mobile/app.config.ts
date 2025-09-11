@@ -34,7 +34,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       bundler: "metro",
     },
     plugins: [
-      ["expo-build-properties", { ios: { deploymentTarget: "13.4" } }]
+      ["expo-build-properties", { ios: { deploymentTarget: "14.0" } }]
     ],
     experiments: {
       tsconfigPaths: false,
