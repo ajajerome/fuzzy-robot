@@ -28,7 +28,7 @@ jobs:
         run: eas whoami || true
       - name: Install deps
         working-directory: apps/mobile
-        run: npm ci || npm i
+        run: npm install --no-audit --no-fund
       - name: Build Dev Client
         working-directory: apps/mobile
         env:
