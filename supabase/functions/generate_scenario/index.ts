@@ -56,7 +56,7 @@ function defaultFormation(format: GameFormat, team: TeamId, direction: Attacking
       push(`${team}-mf1`, "MF", x(40), quarterY);
       push(`${team}-mf2`, "MF", x(40), threeQuarterY);
       push(`${team}-am`, "MF", x(55), midY);
-      push(`${team}-fw`, "FW`, x(75), midY);
+      push(`${team}-fw`, "FW", x(75), midY);
       break;
     }
     case "9v9": {
@@ -75,14 +75,14 @@ function defaultFormation(format: GameFormat, team: TeamId, direction: Attacking
       push(`${team}-gk`, "GK", x(3), midY);
       push(`${team}-rb`, "DF", x(15), threeQuarterY);
       push(`${team}-rcb`, "DF", x(12), midY - 70);
-      push(`${team}-lcb`, "DF`, x(12), midY + 70);
-      push(`${team}-lb`, "DF`, x(15), quarterY);
-      push(`${team}-cm1`, "MF`, x(35), midY - 80);
-      push(`${team}-cm2`, "MF`, x(35), midY + 80);
-      push(`${team}-cam`, "MF`, x(50), midY);
-      push(`${team}-rw`, "FW`, x(65), quarterY + 40);
-      push(`${team}-st`, "FW`, x(72), midY);
-      push(`${team}-lw`, "FW`, x(65), threeQuarterY - 40);
+      push(`${team}-lcb`, "DF", x(12), midY + 70);
+      push(`${team}-lb`, "DF", x(15), quarterY);
+      push(`${team}-cm1`, "MF", x(35), midY - 80);
+      push(`${team}-cm2`, "MF", x(35), midY + 80);
+      push(`${team}-cam`, "MF", x(50), midY);
+      push(`${team}-rw`, "FW", x(65), quarterY + 40);
+      push(`${team}-st`, "FW", x(72), midY);
+      push(`${team}-lw`, "FW", x(65), threeQuarterY - 40);
       break;
     }
   }
